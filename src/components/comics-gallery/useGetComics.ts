@@ -4,7 +4,7 @@ const range = (from: number, to: number): number[] =>
   Array.from({ length: to - from + 1 }, (_, i) => from + i);
 
 export function useGetComics(from?: number, to?: number) {
-  const { data, isLoading } = useQuery({
+  return useQuery({
     enabled: Boolean(from && to),
     queryKey: ['comics', from, to],
     queryFn: async () => {
@@ -25,9 +25,4 @@ export function useGetComics(from?: number, to?: number) {
       return await Promise.all(promises);
     },
   });
-
-  return {
-    data: data?.sort((left, right) => right.num - left.num),
-    isLoading,
-  };
 }

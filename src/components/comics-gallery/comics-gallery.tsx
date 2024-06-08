@@ -20,6 +20,10 @@ export function ComicsGallery() {
     return <div>Loading...</div>;
   }
 
+  if (latestComic.isError || comics.isError) {
+    return <div>Error loading comics</div>;
+  }
+
   if (!latestComic.data || !comics.data) {
     return <div>No comics found</div>;
   }
