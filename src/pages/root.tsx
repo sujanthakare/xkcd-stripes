@@ -1,7 +1,9 @@
+import { ComicsGallery } from '@/components/comics-gallery';
+
 export function Root() {
   return (
     <div>
-      <h1>Hello, world! root</h1>
+      <ComicsGallery />
     </div>
   );
 }
