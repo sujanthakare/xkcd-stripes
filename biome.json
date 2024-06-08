@@ -18,20 +18,14 @@
             "suspicious": {
                 "noExplicitAny": "warn"
             }
-        },
-        "ignore": [
-            "./src/locales/**/*"
-        ]
+        }
     },
     "formatter": {
         "enabled": true,
         "formatWithErrors": false,
         "indentStyle": "space",
         "indentWidth": 2,
-        "lineWidth": 120,
-        "lineEnding": "lf",
-        "ignore": [
-            "./src/locales/**/*"
-        ]
+        "lineWidth": 80,
+        "lineEnding": "lf"
     }
 }
