@@ -1,3 +1,6 @@
+import { Box } from '@/react-ui/box';
+import { Button } from '@/react-ui/button';
+
 type PaginationProps = {
   currentPage: number;
   totalComics: number;
@@ -25,31 +28,35 @@ export function Pagination(props: PaginationProps) {
   };
 
   const handleEnd = () => {
-    onPageChange(totalComics / pageSize);
+    onPageChange(Math.ceil(totalComics / pageSize));
   };
 
   const hasPreviousPage = currentPage > 1;
   const hasNextPage = currentPage < totalComics / pageSize;
 
   return (
-    <div>
-      <button type="button" onClick={handleStart}>
+    <Box display="flex" flexDirection="row" gap="sm" alignItems="center">
+      <Button type="button" onClick={handleStart}>
         Start
-      </button>
-      {hasPreviousPage && (
-        <button type="button" onClick={handlePreviousPage}>
-          Previous
-        </button>
-      )}
-      <h1>{currentPage}</h1>
-      {hasNextPage && (
-        <button type="button" onClick={handleNextPage}>
-          Next
-        </button>
-      )}
-      <button type="button" onClick={handleEnd}>
+      </Button>
+
+      <Button
+        type="button"
+        onClick={handlePreviousPage}
+        disabled={!hasPreviousPage}
+      >
+        Previous
+      </Button>
+
+      <p>{currentPage}</p>
+
+      <Button type="button" onClick={handleNextPage} disabled={!hasNextPage}>
+        Next
+      </Button>
+
+      <Button type="button" onClick={handleEnd}>
         End
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 }
