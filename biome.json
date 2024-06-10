@@ -1,31 +1,29 @@
 {
-    "$schema": "https://biomejs.dev/schemas/1.8.0/schema.json",
-    "organizeImports": {
-        "include": [
-            "./src/**/*"
-        ]
-    },
-    "javascript": {
-        "formatter": {
-            "quoteStyle": "single",
-            "semicolons": "always"
-        }
-    },
-    "linter": {
-        "enabled": true,
-        "rules": {
-            "recommended": true,
-            "suspicious": {
-                "noExplicitAny": "warn"
-            }
-        }
-    },
+  "$schema": "https://biomejs.dev/schemas/1.8.0/schema.json",
+  "organizeImports": {
+    "include": ["./src/**/*"]
+  },
+  "javascript": {
     "formatter": {
-        "enabled": true,
-        "formatWithErrors": false,
-        "indentStyle": "space",
-        "indentWidth": 2,
-        "lineWidth": 80,
-        "lineEnding": "lf"
+      "quoteStyle": "single",
+      "semicolons": "always"
     }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noExplicitAny": "warn"
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "lineEnding": "lf"
+  }
 }
