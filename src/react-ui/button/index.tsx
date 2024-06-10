@@ -1,15 +1,20 @@
 import styled from 'styled-components';
+import type { Theme } from '../theme/types';
 
-export const Button = styled.button`
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  color?: keyof Theme['colors'];
+}
+
+export const Button = styled.button<ButtonProps>`
   background-color: var(--color-primary);
+  background-color: ${({ color = 'primary' }) => color && `var(--color-${color})`};
   border: none;
-  color: white;
+  color: var(--color-text-light);
   padding: 0.5rem 1rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 1rem;
-  margin: 4px 2px;  
+  font-size: 1rem;  
   cursor: pointer;
 
   &:hover {

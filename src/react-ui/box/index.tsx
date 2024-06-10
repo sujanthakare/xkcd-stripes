@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import type { Theme } from '../theme/types';
 
 interface StyledBoxProps {
-  $flex?: boolean;
+  $flex?: number | string;
   $display?: React.CSSProperties['display'];
   $flexDirection?: React.CSSProperties['flexDirection'];
   $justifyContent?: React.CSSProperties['justifyContent'];
@@ -21,10 +21,16 @@ interface StyledBoxProps {
   $height?: React.CSSProperties['height'];
   $maxWidth?: React.CSSProperties['maxWidth'];
   $maxHeight?: React.CSSProperties['maxHeight'];
+  $minHeight?: React.CSSProperties['minHeight'];
+  $minWidth?: React.CSSProperties['minWidth'];
   $overflow?: React.CSSProperties['overflow'];
+  $position?: React.CSSProperties['position'];
+  $bottom?: React.CSSProperties['bottom'];
+  $top?: React.CSSProperties['top'];
 }
 
 const StyledBox = styled.div<StyledBoxProps>`
+  ${({ $flex }) => $flex && css`flex: ${$flex};`}
   ${({ $display }) => $display && css`display: ${$display};`}
   ${({ $justifyContent }) => $justifyContent && css`justify-content: ${$justifyContent};`}
   ${({ $alignItems }) => $alignItems && css`align-items: ${$alignItems};`}
@@ -43,6 +49,11 @@ const StyledBox = styled.div<StyledBoxProps>`
   ${({ $maxWidth }) => $maxWidth && css`max-width: ${$maxWidth};`}
   ${({ $maxHeight }) => $maxHeight && css`max-height: ${$maxHeight};`}
   ${({ $overflow }) => $overflow && css`overflow: ${$overflow};`}
+  ${({ $position }) => $position && css`position: ${$position};`}
+  ${({ $bottom }) => $bottom && css`bottom: ${$bottom};`}
+  ${({ $top }) => $top && css`top: ${$top};`}
+  ${({ $minHeight }) => $minHeight && css`min-height: ${$minHeight};`}
+  ${({ $minWidth }) => $minWidth && css`min-width: ${$minWidth};`}
 `;
 
 type BoxProps = {
