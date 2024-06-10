@@ -6,8 +6,8 @@ export type Comic = {
   day: string;
   month: string;
   year: string;
-  news: string;
-  transcript: string;
-  link: string;
+  news?: string;
+  transcript?: string;
+  link?: string;
   safe_title: string;
 };
