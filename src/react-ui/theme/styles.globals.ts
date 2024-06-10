@@ -47,6 +47,7 @@ button {
   padding: 0;
   border: 0;
   vertical-align: baseline;
+  user-select: none; 
 }
 
 html { font-size: ${(props) => props.theme.scale.default}; }

@@ -16,6 +16,7 @@ export function NavActions(props: NavActionsProps) {
   }
 
   const isLast = latestComic.data?.num === num;
+  const isFirst = num === 1;
 
   return (
     <header>
@@ -38,10 +39,10 @@ export function NavActions(props: NavActionsProps) {
           </Button>
         </Box>
         <Box display="flex" flexDirection="row" gap="sm">
-          <Button as={StyledLink} to={`/details/${num - 1}`}>
+          <Button as={StyledLink} to={`/details/${num + 1}`} disabled={isLast}>
             Previous
           </Button>
-          <Button as={StyledLink} to={`/details/${num + 1}`} disabled={isLast}>
+          <Button as={StyledLink} to={`/details/${num - 1}`} disabled={isFirst}>
             Next
           </Button>
         </Box>

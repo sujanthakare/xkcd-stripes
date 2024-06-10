@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledLink = styled(Link)`
+interface StyledLinkProps extends React.ComponentProps<typeof Link> {
+  disabled?: boolean;
+}
+export const StyledLink = styled(Link)<StyledLinkProps>`
   text-decoration: none;
 
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+  ${({ disabled }) => {
+    if (disabled) {
+      return css`
+        opacity: 0.6;
+        cursor: not-allowed;
+        pointer-events: none;
+      `;
+    }
+  }}
 `;
