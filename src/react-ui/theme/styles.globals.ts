@@ -7,6 +7,8 @@ export const cssVariables = css<{ theme?: Theme }>`
     --color-secondary: ${(props) => props.theme.colors.secondary};
     --color-background: ${(props) => props.theme.colors.background};
     --color-gray: ${(props) => props.theme.colors.gray};
+    --color-text: ${(props) => props.theme.colors.text};
+    --color-text-light: ${(props) => props.theme.colors.textLight};
 
     --spacing-xs: ${(props) => props.theme.spacing.xs};
     --spacing-sm: ${(props) => props.theme.spacing.sm};

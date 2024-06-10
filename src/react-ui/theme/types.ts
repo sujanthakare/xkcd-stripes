@@ -2,21 +2,21 @@ export type Theme = {
   colors: {
     primary: string;
     secondary: string;
-    tertiary: string;
-    text: string;
     background: string;
     gray: string;
+    text: string;
+    textLight: string;
   };
   fonts: {
     body: string;
   };
   spacing: {
-    xs: number;
-    sm: number;
-    md: number;
-    lg: number;
-    xl: number;
-    xxl: number;
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    xxl: string;
   };
   scale: {
     default: string;
