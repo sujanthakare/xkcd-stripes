@@ -18,36 +18,56 @@ export function ComicDetails(props: ComicDetailsProps) {
   const { data, isLoading, isError } = useGetComic(num);
 
   if (isError) {
-    return <div>Error loading comic</div>;
+    return <div role="alert">Error loading comic</div>;
   }
 
   return (
-    <Container display="flex" flexDirection="column" gap="xl">
+    <Container display="flex" flexDirection="column">
       <NavActions num={num} />
-
-      <h1>
-        {num} : {data?.safe_title}
-      </h1>
-
-      <Card padding="xl">
-        <CardBody height="28rem" position="relative">
-          {isLoading && <Skeleton />}
-          {data && (
-            <LazyImage src={data.img} alt={data.alt} objectFit="contain" />
-          )}
-        </CardBody>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <h3>Alt</h3>
-        </CardHeader>
-        <CardBody padding="xl" minHeight="2rem">
-          {data && <p>{data.alt}</p>}
-        </CardBody>
-      </Card>
-
       <Box
+        as="main"
+        display="flex"
+        flexDirection="column"
+        gap="xl"
+        padding="md"
+        aria-labelledby="comic-title"
+      >
+        <h1 id="comic-title">
+          {num} : {data?.safe_title}
+        </h1>
+
+        <Card padding="xl">
+          <CardBody height="28rem" position="relative" aria-busy={isLoading}>
+            {isLoading && <Skeleton aria-label="Loading comic image" />}
+            {data && (
+              <LazyImage src={data.img} alt={data.alt} objectFit="contain" />
+            )}
+          </CardBody>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <h3>Alt</h3>
+          </CardHeader>
+          <CardBody padding="xl" minHeight="2rem" aria-busy={isLoading}>
+            {isLoading && <Skeleton aria-label="Loading comic alt text" />}
+            {data && <p>{data.alt}</p>}
+          </CardBody>
+        </Card>
+
+        {data?.news && (
+          <Card>
+            <CardHeader>
+              <h3>News</h3>
+            </CardHeader>
+            <CardBody padding="xl" minHeight="2rem">
+              {data.news}
+            </CardBody>
+          </Card>
+        )}
+      </Box>
+      <Box
+        as="footer"
         flexDirection="row"
         justifyContent="center"
         alignItems="center"

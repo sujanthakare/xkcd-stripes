@@ -13,7 +13,10 @@ export function ComicThumbnail(props: ComicThumbnailProps) {
   const { data, isLoading, isError } = useGetComic(num);
 
   return (
-    <StyledLink to={`/details/${num}`}>
+    <StyledLink
+      to={`/details/${num}`}
+      aria-label={`View details for comic ${num}`}
+    >
       <Card width="20rem" height="16rem">
         <CardHeader>
           <h3>
@@ -24,7 +27,11 @@ export function ComicThumbnail(props: ComicThumbnailProps) {
           {isLoading && <Skeleton />}
           {isError && <div>Error loading comic</div>}
           {data && (
-            <LazyImage src={data.img} alt={data.alt} objectFit="cover" />
+            <LazyImage
+              src={data.img}
+              alt={`Comic ${num}: ${data.alt}`}
+              objectFit="cover"
+            />
           )}
         </CardBody>
       </Card>

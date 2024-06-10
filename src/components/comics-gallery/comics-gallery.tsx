@@ -20,35 +20,47 @@ export function ComicsGallery() {
   } = useListRenderConfig();
 
   if (isError) {
-    return <div>Error loading comics</div>;
+    return <div role="alert">Error loading comics</div>;
   }
 
   return (
     <Container>
       <Box display="flex" flexDirection="column" gap="xl" maxWidth="64rem">
+        <header>
+          <Box
+            as="nav"
+            display="flex"
+            flexDirection="row"
+            justifyContent="flex-start"
+            padding="sm"
+          >
+            <Button as="a" href="/bookmarks">
+              Bookmarks
+            </Button>
+          </Box>
+        </header>
+
         <Box
-          display="flex"
-          flexDirection="row"
-          justifyContent="flex-end"
-          padding="sm"
-        >
-          <Button as="a" href="/bookmarks">
-            Bookmarks
-          </Button>
-        </Box>
-        <Box
+          as="main"
           display="flex"
           flexDirection="row"
           justifyContent="center"
           flexWrap="wrap"
           gap="xl"
+          aria-busy={isLoading}
         >
-          {isLoading && <Skeleton />}
+          {isLoading && <Skeleton aria-label="Loading comics" />}
           {comicsToRender?.map((comicNum) => (
             <ComicThumbnail num={comicNum} key={comicNum} />
           ))}
         </Box>
-        <Box display="flex" flexDirection="row" justifyContent="center">
+
+        <Box
+          as="footer"
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+        >
           <Pagination
             currentPage={currentPage}
             totalComics={totalComics}

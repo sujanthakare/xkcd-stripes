@@ -9,7 +9,7 @@ export default function Details() {
   const { data, isLoading } = useLatestComic();
 
   if (isLoading) {
-    return <Skeleton />;
+    return <Skeleton aria-busy />;
   }
 
   const isPageNotFound =

@@ -2,7 +2,7 @@ import type React from 'react';
 import styled, { css } from 'styled-components';
 import type { Theme } from '../theme/types';
 
-interface StyledBoxProps {
+interface StyledBoxProps extends React.HTMLAttributes<HTMLDivElement> {
   $flex?: number | string;
   $display?: React.CSSProperties['display'];
   $flexDirection?: React.CSSProperties['flexDirection'];
@@ -65,8 +65,11 @@ type BoxProps = {
 export function Box({
   children,
   className,
+  as,
   ...rest
-}: React.PropsWithChildren<BoxProps & { className?: string }>) {
+}: React.PropsWithChildren<
+  BoxProps & { className?: string; as?: React.ElementType }
+>) {
   const transientProps: Record<string, unknown> = {};
 
   for (const key in rest) {
@@ -74,7 +77,7 @@ export function Box({
   }
 
   return (
-    <StyledBox {...transientProps} className={className}>
+    <StyledBox {...transientProps} className={className} as={as}>
       {children}
     </StyledBox>
   );

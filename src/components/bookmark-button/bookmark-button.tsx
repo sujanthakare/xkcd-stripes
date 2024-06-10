@@ -14,11 +14,22 @@ export function BookmarkButton(props: BookmarkButtonProps) {
 
   if (isBookmarked) {
     return (
-      <Button color="secondary" onClick={() => removeBookmark(num)}>
+      <Button
+        color="secondary"
+        onClick={() => removeBookmark(num)}
+        aria-label={`Remove bookmark comic ${num}`}
+      >
         Remove bookmark
       </Button>
     );
   }
 
-  return <Button onClick={() => addBookmark(num)}>Add bookmark</Button>;
+  return (
+    <Button
+      onClick={() => addBookmark(num)}
+      aria-label={`Bookmark comic ${num}`}
+    >
+      Add bookmark
+    </Button>
+  );
 }

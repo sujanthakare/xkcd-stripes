@@ -48,9 +48,9 @@ export function Pagination(props: PaginationProps) {
         Previous
       </Button>
 
-      <p>
+      <Box as="p" padding="sm">
         {currentPage} of {Math.ceil(totalComics / pageSize)}
-      </p>
+      </Box>
 
       <Button type="button" onClick={handleNextPage} disabled={!hasNextPage}>
         Next
